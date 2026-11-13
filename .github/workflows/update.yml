@@ -1,0 +1,65 @@
+name: Update archive
+
+on:
+  schedule:
+    # Every day at 11:17 UTC (5:17 am in Chicago during winter, 6:17 am in summer).
+    - cron: "17 11 * * *"
+  workflow_dispatch:
+    inputs:
+      full_scan:
+        description: "Re-check every post, not just the newest ones"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - "transcripts/**"
+      - "topics.json"
+      - "config.json"
+      - "data/topic_overrides.json"
+      - "scripts/**"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-archive
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Fetch new posts from Instagram
+        if: github.event_name != 'push'
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python3 scripts/fetch_posts.py ${{ inputs.full_scan && '--full' || '' }}
+
+      - name: Build the page
+        run: python3 scripts/build_site.py
+
+      - name: Save the updated post list
+        run: |
+          if [ -n "$(git status --porcelain data)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data
+            git commit -m "Add new posts"
+            git pull --rebase
+            git push
+          fi
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

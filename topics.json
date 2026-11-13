@@ -1,0 +1,53 @@
+{
+  "_how_this_works": "Each reel is tagged with every topic whose keywords appear in its caption or transcript. Matching ignores case and only matches whole words. A keyword ending in * also matches longer words (recruit* matches recruiting). Words under 'exact_case' only match with the same capital letters, so PE does not match 'pe'. To tag a reel by hand, use data/topic_overrides.json.",
+  "topics": [
+    {
+      "id": "breaking-in",
+      "label": "Breaking in",
+      "keywords": ["recruit*", "internship*", "summer analyst*", "networking", "coffee chat*", "cold email*", "cold call*", "resume*", "résumé*", "linkedin", "target school*", "non-target*", "nontarget*", "career fair*", "headhunter*", "on-cycle", "off-cycle", "job offer*", "return offer*", "full-time offer*", "job application*", "break into", "breaking into", "get into finance"],
+      "exact_case": []
+    },
+    {
+      "id": "interviews",
+      "label": "Interviews",
+      "keywords": ["interview*", "technicals", "technical question*", "behavioral*", "walk me through", "tell me about yourself", "why banking", "why investment banking", "paper lbo", "modeling test*", "case stud*", "superday*", "question bank*"],
+      "exact_case": ["DCF", "LBO"]
+    },
+    {
+      "id": "excel",
+      "label": "Excel and modeling",
+      "keywords": ["excel", "spreadsheet*", "shortcut*", "ctrl", "keyboard", "xlookup", "vlookup", "index match", "index(match", "sumifs", "countifs", "xirr", "formula*", "pivot table*", "powerpoint", "pitch book*", "pitchbook*", "financial model*", "modeling", "three statement*", "3 statement*"],
+      "exact_case": ["IRR", "CAGR"]
+    },
+    {
+      "id": "on-the-job",
+      "label": "On the job",
+      "keywords": ["analyst", "analysts", "associate", "associates", "managing director*", "vice president*", "staffer*", "boss", "office", "work hours", "long hours", "all-nighter*", "vacation*", "email etiquette", "etiquette", "dress code", "how to dress", "what to wear", "suit", "suits", "quarter zip*", "quarter-zip*", "vest", "vests", "wardrobe", "normalized", "wall street", "banker*", "desk", "promotion*", "promoted", "workplace", "coworker*", "manager*"],
+      "exact_case": ["MD", "MDs", "VP", "VPs"]
+    },
+    {
+      "id": "pay-and-careers",
+      "label": "Pay and careers",
+      "keywords": ["salary", "salaries", "bonus*", "comp", "compensation", "exit opp*", "private equity", "hedge fund*", "buy side", "buy-side", "sell side", "sell-side", "career path*", "investment banking", "consulting", "asset management", "corporate finance", "venture capital", "quant", "quants", "trader*", "trading"],
+      "exact_case": ["PE", "IB", "MBA", "VC"]
+    },
+    {
+      "id": "money",
+      "label": "Investing and money",
+      "keywords": ["invest", "investing", "investor", "investors", "index fund*", "roth", "401(k)", "401k", "budget*", "saving", "savings", "credit card*", "credit score*", "stock market", "stocks", "s&p 500", "compound interest", "retire*", "tax", "taxes", "high-yield", "net worth", "debt", "mortgage*"],
+      "exact_case": ["ETF", "ETFs", "IRA", "HYSA"]
+    },
+    {
+      "id": "resources",
+      "label": "Resources",
+      "keywords": ["investopedia", "corporate finance institute", "wall street prep", "mergers & inquisitions", "mergers and inquisitions", "peak frameworks", "breaking into wall street", "book", "books", "podcast*", "newsletter*", "online course*", "resource*"],
+      "exact_case": ["CFI", "BIWS", "WSP"]
+    },
+    {
+      "id": "humor",
+      "label": "Skits and jokes",
+      "keywords": ["joke*", "joking", "skit*", "meme*", "pronounced", "satire", "parody"],
+      "exact_case": []
+    }
+  ]
+}

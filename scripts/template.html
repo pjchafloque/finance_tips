@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>__TITLE__</title>
+<style>
+  :root {
+    color-scheme: light;
+    --excel-green: #217346;
+    --select-green: #107C41;
+    --filter-blue: #0F6CBD;
+    --grid: #D9D9D9;
+    --header: #F2F2F2;
+    --ink: #000;
+    --ink-2: #595959;
+    --good-bg: #C6EFCE;    --good-ink: #006100;
+    --neutral-bg: #FFEB9C; --neutral-ink: #9C5700;
+    --bad-bg: #FFC7CE;     --bad-ink: #9C0006;
+    --font: Aptos, "Segoe UI Variable Text", "Segoe UI", Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --title-h: 2.5rem;
+    --formula-h: 2.75rem;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh; display: flex; flex-direction: column;
+    font: 15px/1.45 var(--font); color: var(--ink); background: #fff;
+  }
+  a { color: var(--select-green); text-underline-offset: 2px; }
+  a:hover { color: var(--excel-green); }
+  :focus-visible { outline: 2px solid var(--select-green); outline-offset: 1px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+  /* Title bar */
+  .titlebar {
+    position: sticky; top: 0; z-index: 4;
+    height: var(--title-h);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0 1rem;
+    background: var(--excel-green); color: #fff;
+  }
+  .titlebar h1 { margin: 0; font-size: .9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .titlebar a { color: #fff; font-size: .85rem; white-space: nowrap; }
+  .titlebar a:focus-visible { outline-color: #fff; }
+
+  /* Formula bar: the search box */
+  .formula {
+    position: sticky; top: var(--title-h); z-index: 4;
+    height: var(--formula-h);
+    display: flex; align-items: stretch;
+    background: #fff; border-bottom: 1px solid var(--grid);
+  }
+  .formula .fx {
+    flex: none; width: 3.25rem;
+    display: grid; place-items: center;
+    border-right: 1px solid var(--grid);
+    font: italic 1.05rem Cambria, "Times New Roman", serif; color: var(--ink-2);
+  }
+  .formula input[type="search"] {
+    flex: 1; min-width: 0;
+    border: 0; padding: 0 .75rem;
+    font: inherit; color: var(--ink); background: transparent;
+  }
+  .formula input[type="search"]::placeholder { color: #767676; }
+  .formula input[type="search"]:focus { outline: none; box-shadow: inset 0 0 0 2px var(--select-green); }
+  .formula .toggle {
+    flex: none; display: flex; align-items: center; gap: .45rem;
+    padding: 0 1rem; border-left: 1px solid var(--grid);
+    font-size: .85rem; color: var(--ink-2); white-space: nowrap; cursor: pointer;
+  }
+  .formula .toggle input { accent-color: var(--select-green); width: 1rem; height: 1rem; margin: 0; }
+
+  /* The sheet */
+  main { flex: 1; padding-bottom: 1rem; }
+  .sheet { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .sheet col.c-num { width: 3.25rem; }
+  .sheet col.c-date { width: 7.25rem; }
+  .sheet col.c-link { width: 5.25rem; }
+  .sheet col.c-topics { width: 12rem; }
+  .sheet col.c-text { width: 7.5rem; }
+  .sheet th, .sheet td {
+    border: 1px solid var(--grid);
+    padding: .45rem .65rem;
+    text-align: left; vertical-align: top;
+  }
+  .sheet thead th {
+    position: sticky; top: calc(var(--title-h) + var(--formula-h)); z-index: 3;
+    background: var(--header); color: var(--ink-2);
+    font-size: .8rem; font-weight: 400;
+    padding-top: .3rem; padding-bottom: .3rem;
+    box-shadow: 0 1px 0 var(--grid);
+  }
+  .sheet tr:first-child td { border-top: 0; }
+  .sheet th:first-child, .sheet td:first-child { border-left: 0; }
+  .sheet th:last-child, .sheet td:last-child { border-right: 0; }
+  td.num {
+    background: var(--header); color: var(--ink-2);
+    font-size: .8rem; text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  body.filtered td.num { color: var(--filter-blue); }
+  td.date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.link .kind { display: block; font-size: .8rem; color: var(--ink-2); }
+  td.said .text { max-width: 72ch; white-space: pre-line; overflow-wrap: anywhere; }
+  td.said.clamped .text {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+  }
+  td.said .cap { max-width: 72ch; margin-top: .4rem; color: var(--ink-2); font-size: .875rem; white-space: pre-line; overflow-wrap: anywhere; }
+  td.said .none { color: var(--ink-2); }
+  td.said button.more {
+    margin-top: .25rem; padding: 0; border: 0; background: none;
+    font: inherit; font-size: .85rem; color: var(--select-green); text-decoration: underline; text-underline-offset: 2px;
+    cursor: pointer;
+  }
+  td.topics { font-size: .875rem; }
+  td.topics .sponsored { color: var(--ink-2); }
+  td.text { font-size: .85rem; }
+  td.text.good    { background: var(--good-bg);    color: var(--good-ink); }
+  td.text.neutral { background: var(--neutral-bg); color: var(--neutral-ink); }
+  td.text.bad     { background: var(--bad-bg);     color: var(--bad-ink); }
+  tr:focus-within td.said { box-shadow: inset 0 0 0 2px var(--select-green); }
+  mark { background: var(--neutral-bg); color: inherit; padding: 0 1px; }
+  tr.note td { color: var(--ink-2); background: #fff; padding: .9rem .65rem; }
+  tr.note td.num { background: var(--header); }
+
+  /* Sheet tabs and status bar */
+  .bottom { position: sticky; bottom: 0; z-index: 4; background: var(--header); }
+  .tabs {
+    display: flex; overflow-x: auto; scrollbar-width: thin;
+    border-top: 1px solid var(--grid); background: var(--header);
+  }
+  .tabs button {
+    flex: none; display: flex; align-items: baseline; gap: .4rem;
+    border: 0; border-right: 1px solid var(--grid);
+    padding: .55rem .95rem;
+    background: transparent; color: var(--ink);
+    font: inherit; font-size: .875rem; white-space: nowrap; cursor: pointer;
+  }
+  .tabs button:hover { background: #E7E7E7; }
+  .tabs button[aria-selected="true"] {
+    background: #fff; color: var(--select-green); font-weight: 600;
+    box-shadow: inset 0 -3px 0 var(--select-green);
+  }
+  .tabs button:focus-visible { outline-offset: -2px; }
+  .tabs .n { font-size: .8rem; font-weight: 400; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .tabs button.empty { color: #8A8A8A; }
+  .statusbar {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding: .3rem 1rem; border-top: 1px solid var(--grid);
+    font-size: .78rem; color: var(--ink-2);
+  }
+  .statusbar .mode { margin-right: 1.25rem; color: var(--ink); }
+
+  @media (max-width: 760px) {
+    .titlebar .long { display: none; }
+    .formula .toggle { padding: 0 .75rem; }
+    .sheet, .sheet tbody { display: block; }
+    .sheet thead, .sheet colgroup { display: none; }
+    .sheet tr {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr auto auto;
+      grid-template-areas: "num date text link" "num said said said" "num topics topics topics";
+      border-bottom: 1px solid var(--grid);
+    }
+    .sheet td { display: block; border: 0; padding: .3rem .7rem; }
+    td.num { grid-area: num; border-right: 1px solid var(--grid); padding-top: .6rem; }
+    td.date { grid-area: date; padding-top: .6rem; color: var(--ink-2); font-size: .85rem; }
+    td.text { grid-area: text; align-self: start; margin-top: .55rem; padding: .05rem .45rem; font-size: .78rem; }
+    td.link { grid-area: link; padding-top: .55rem; text-align: right; }
+    td.link .kind { display: none; }
+    td.said { grid-area: said; padding-bottom: .5rem; }
+    td.topics { grid-area: topics; margin-top: -.3rem; padding-bottom: .6rem; color: var(--ink-2); font-size: .82rem; }
+    td.said:empty, td.topics:empty { display: none; }
+    tr:focus-within td.said { box-shadow: none; }
+    tr.note { display: grid; grid-template-columns: 2.75rem 1fr; grid-template-areas: "num said"; }
+    tr.note td:last-child { grid-area: said; padding: .8rem .7rem; }
+  }
+</style>
+</head>
+<body>
+<header class="titlebar">
+  <h1 id="title">__TITLE__</h1>
+  <a id="profile" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"></a>
+</header>
+
+<div class="formula" role="search">
+  <label class="fx" for="q"><span aria-hidden="true">fx</span><span class="sr-only">Search</span></label>
+  <input id="q" type="search" placeholder="Search what he said, like superday or XLOOKUP" autocomplete="off" spellcheck="false">
+  <label class="toggle"><input id="reels-only" type="checkbox" checked> Reels only</label>
+</div>
+
+<main id="sheet" role="tabpanel" tabindex="-1">
+  <table class="sheet">
+    <caption class="sr-only" id="sheet-caption">Posts</caption>
+    <colgroup><col class="c-num"><col class="c-date"><col class="c-link"><col class="c-said"><col class="c-topics"><col class="c-text"></colgroup>
+    <thead>
+      <tr><th scope="col"><span class="sr-only">Row</span></th><th scope="col">Posted</th><th scope="col">Reel</th><th scope="col">What he said</th><th scope="col">Topics</th><th scope="col">Text</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <noscript><p style="padding:1rem">This page needs JavaScript to show the posts.</p></noscript>
+</main>
+
+<div class="bottom">
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Topics"></nav>
+  <footer class="statusbar">
+    <span><span class="mode" id="mode">Ready</span><span id="checked"></span></span>
+    <span id="count"></span>
+  </footer>
+</div>
+
+<script id="site-data" type="application/json">__SITE_DATA__</script>
+<script>
+(function () {
+  "use strict";
+  var data = JSON.parse(document.getElementById("site-data").textContent);
+  var posts = data.posts || [];
+  var topicLabels = {};
+  (data.topics || []).forEach(function (t) { topicLabels[t.id] = t.label; });
+
+  var els = {
+    q: document.getElementById("q"),
+    reelsOnly: document.getElementById("reels-only"),
+    rows: document.getElementById("rows"),
+    tabs: document.getElementById("tabs"),
+    mode: document.getElementById("mode"),
+    count: document.getElementById("count"),
+    checked: document.getElementById("checked"),
+    caption: document.getElementById("sheet-caption"),
+    profile: document.getElementById("profile")
+  };
+
+  var username = (data.account && data.account.username) || "";
+  if (username) {
+    els.profile.innerHTML = "@" + esc(username) + '<span class="long"> on Instagram</span>';
+    els.profile.href = "https://www.instagram.com/" + encodeURIComponent(username) + "/";
+  } else {
+    els.profile.remove();
+  }
+  if (window.matchMedia("(max-width: 760px)").matches) els.q.placeholder = "Search what he said";
+
+  var dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" });
+  var stampFmt = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short" });
+  if (data.checked_at) {
+    var checked = new Date(data.checked_at);
+    if (!isNaN(checked)) els.checked.textContent = "Last checked " + stampFmt.format(checked);
+  }
+
+  // Sheets: All, one per topic, then Sponsored and Not sorted yet.
+  var sheets = [{ id: "all", label: "All" }];
+  (data.topics || []).forEach(function (t) {
+    if (posts.some(function (p) { return p.topics.indexOf(t.id) !== -1; })) sheets.push({ id: t.id, label: t.label });
+  });
+  if (posts.some(function (p) { return p.sponsored; })) sheets.push({ id: "sponsored", label: "Sponsored" });
+  sheets.push({ id: "unsorted", label: "Not sorted yet" });
+
+  var state = { sheet: "all", words: [], reelsOnly: true };
+  var fromHash = decodeURIComponent(location.hash.slice(1));
+  if (sheets.some(function (s) { return s.id === fromHash; })) state.sheet = fromHash;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function highlight(text, words) {
+    if (!words.length) return esc(text);
+    var re = new RegExp("(" + words.map(function (w) { return w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("|") + ")", "gi");
+    return String(text).split(re).map(function (part, i) { return i % 2 ? "<mark>" + esc(part) + "</mark>" : esc(part); }).join("");
+  }
+  function safeUrl(url) {
+    return /^https:\/\/(www\.)?instagram\.com\//.test(url || "") ? url : "";
+  }
+
+  function inSheet(p, sheet) {
+    if (sheet === "all") return true;
+    if (sheet === "unsorted") return p.topics.length === 0;
+    if (sheet === "sponsored") return p.sponsored;
+    return p.topics.indexOf(sheet) !== -1;
+  }
+  function matches(p, words) {
+    if (!words.length) return true;
+    var hay = (p.caption + "\n" + p.transcript).toLowerCase();
+    return words.every(function (w) { return hay.indexOf(w.toLowerCase()) !== -1; });
+  }
+
+  function baseList() {
+    return state.reelsOnly ? posts.filter(function (p) { return p.kind === "reel"; }) : posts;
+  }
+
+  function renderTabs(base) {
+    els.tabs.innerHTML = sheets.map(function (s) {
+      var n = base.filter(function (p) { return inSheet(p, s.id) && matches(p, state.words); }).length;
+      var selected = s.id === state.sheet;
+      return '<button type="button" role="tab" id="tab-' + esc(s.id) + '" data-sheet="' + esc(s.id) + '"' +
+        ' aria-selected="' + selected + '" aria-controls="sheet" tabindex="' + (selected ? 0 : -1) + '"' +
+        (n === 0 ? ' class="empty"' : "") + ">" + esc(s.label) + '<span class="n">' + n + "</span></button>";
+    }).join("");
+    document.getElementById("sheet").setAttribute("aria-labelledby", "tab-" + state.sheet);
+  }
+
+  function rowHtml(p, number) {
+    var words = state.words;
+    var url = safeUrl(p.url);
+    var kind = p.kind === "reel" ? "" : '<span class="kind">' + esc(p.kind) + "</span>";
+    var link = url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">Watch</a>' : "";
+    if (p.kind !== "reel" && url) link = link.replace(">Watch<", ">Open<");
+
+    var main = p.transcript || p.caption;
+    var said;
+    if (main) {
+      var long = main.length > 240 || main.split("\n").length > 4;
+      said = '<div class="text">' + highlight(main, words) + "</div>";
+      if (p.transcript && p.caption) said += '<div class="cap">Caption: ' + highlight(p.caption, words) + "</div>";
+      if (long) said += '<button type="button" class="more" aria-expanded="false">Show all</button>';
+      said = '<td class="said' + (long ? " clamped" : "") + '">' + said + "</td>";
+    } else {
+      said = '<td class="said"></td>';
+    }
+
+    var topics = p.topics.map(function (t) { return esc(topicLabels[t] || t); }).join(", ");
+    if (p.sponsored) topics += (topics ? ", " : "") + '<span class="sponsored">Sponsored</span>';
+
+    var status = p.transcript ? ["good", "Transcript"] : p.caption ? ["neutral", "Caption only"] : ["bad", "No text yet"];
+    var date = new Date(p.ts);
+
+    return "<tr>" +
+      '<td class="num">' + number + "</td>" +
+      '<td class="date">' + (isNaN(date) ? "" : esc(dateFmt.format(date))) + "</td>" +
+      '<td class="link">' + link + kind + "</td>" +
+      said +
+      '<td class="topics">' + topics + "</td>" +
+      '<td class="text ' + status[0] + '">' + status[1] + "</td>" +
+      "</tr>";
+  }
+
+  function noteRow(html) {
+    return '<tr class="note"><td class="num"></td><td colspan="5">' + html + "</td></tr>";
+  }
+
+  function render() {
+    var base = baseList();
+    var numbers = new Map(base.map(function (p, i) { return [p.id, i + 1]; }));
+    var shown = base.filter(function (p) { return inSheet(p, state.sheet) && matches(p, state.words); });
+    var filtered = state.sheet !== "all" || state.words.length > 0;
+    document.body.classList.toggle("filtered", filtered);
+    els.mode.textContent = filtered ? "Filter mode" : "Ready";
+    els.count.textContent = "Count: " + shown.length;
+    var label = sheets.filter(function (s) { return s.id === state.sheet; })[0].label;
+    els.caption.textContent = label + ": " + shown.length + (state.reelsOnly ? " reels" : " posts");
+
+    var html = "";
+    if (!posts.length) {
+      html = noteRow("No posts yet. They show up after the first daily update. You can also start one from the Actions tab on GitHub.");
+    } else if (!shown.length && state.words.length) {
+      html = noteRow("Nothing in this sheet mentions “" + esc(els.q.value.trim()) + "”. Try fewer words, or switch to the All sheet.");
+    } else if (!shown.length) {
+      html = noteRow(state.reelsOnly ? "No reels here yet. Uncheck Reels only to include photo posts." : "Nothing here yet.");
+    } else {
+      if (state.sheet === "unsorted") {
+        html += noteRow("These have no caption or transcript yet, so there’s nothing to sort them by. They move to a topic once text is added.");
+      }
+      html += shown.map(function (p) { return rowHtml(p, numbers.get(p.id)); }).join("");
+    }
+    els.rows.innerHTML = html;
+    renderTabs(base);
+  }
+
+  els.rows.addEventListener("click", function (e) {
+    var btn = e.target.closest("button.more");
+    if (!btn) return;
+    var cell = btn.closest("td.said");
+    var open = cell.classList.toggle("clamped") === false;
+    btn.textContent = open ? "Show less" : "Show all";
+    btn.setAttribute("aria-expanded", String(open));
+  });
+
+  function selectSheet(id, focus) {
+    state.sheet = id;
+    try {
+      history.replaceState(null, "", id === "all" ? location.pathname + location.search : "#" + id);
+    } catch (err) { /* some embedded viewers don't allow changing the address */ }
+    render();
+    window.scrollTo(0, 0);
+    if (focus) document.getElementById("tab-" + id).focus();
+  }
+
+  window.addEventListener("hashchange", function () {
+    var id = decodeURIComponent(location.hash.slice(1)) || "all";
+    if (id !== state.sheet && sheets.some(function (s) { return s.id === id; })) {
+      state.sheet = id;
+      render();
+    }
+  });
+
+  els.tabs.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-sheet]");
+    if (btn) selectSheet(btn.getAttribute("data-sheet"), false);
+  });
+  els.tabs.addEventListener("keydown", function (e) {
+    var ids = sheets.map(function (s) { return s.id; });
+    var i = ids.indexOf(state.sheet);
+    var next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: ids.length - 1 }[e.key];
+    if (next === undefined) return;
+    e.preventDefault();
+    selectSheet(ids[(next + ids.length) % ids.length], true);
+  });
+
+  var timer;
+  els.q.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      state.words = els.q.value.trim().split(/\s+/).filter(Boolean);
+      render();
+    }, 120);
+  });
+  els.q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { els.q.value = ""; state.words = []; render(); }
+  });
+  els.reelsOnly.addEventListener("change", function () {
+    state.reelsOnly = els.reelsOnly.checked;
+    render();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "/" && document.activeElement !== els.q && !/input|textarea|select/i.test(document.activeElement.tagName)) {
+      e.preventDefault();
+      els.q.focus();
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

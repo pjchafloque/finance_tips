@@ -1,0 +1,912 @@
+{
+ "account": {
+  "username": "your_finance_brother",
+  "name": "Jonathan Tristan",
+  "followers_count": 451193,
+  "media_count": 1516
+ },
+ "posts": [
+  {
+   "id": "18016574942967647",
+   "permalink": "https://www.instagram.com/p/DfslSsjSsU8/",
+   "timestamp": "2026-11-13T21:20:50+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "Out on YouTube now",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18093611540701464",
+   "permalink": "https://www.instagram.com/reel/DfsR8zBy-SD/",
+   "timestamp": "2026-11-13T18:33:18+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18120515291589508",
+   "permalink": "https://www.instagram.com/reel/Dfr9xcOtPYH/",
+   "timestamp": "2026-11-13T15:36:41+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18121844630075718",
+   "permalink": "https://www.instagram.com/reel/DfqpsFNhzDv/",
+   "timestamp": "2026-11-13T03:21:33+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17915849832282733",
+   "permalink": "https://www.instagram.com/reel/Dfp3FCCy95S/",
+   "timestamp": "2026-11-12T19:58:57+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18393353527230121",
+   "permalink": "https://www.instagram.com/reel/DfnQB4hyhSe/",
+   "timestamp": "2026-11-11T19:39:49+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18170994274465505",
+   "permalink": "https://www.instagram.com/p/Dfkuu-kEt_T/",
+   "timestamp": "2026-11-10T20:08:56+0000",
+   "media_type": "CAROUSEL_ALBUM",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18087910598324114",
+   "permalink": "https://www.instagram.com/reel/DfkerryygEZ/",
+   "timestamp": "2026-11-10T17:49:21+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17967848241210549",
+   "permalink": "https://www.instagram.com/reel/Dfi8lRjhI0O/",
+   "timestamp": "2026-11-10T03:33:24+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18111061957929345",
+   "permalink": "https://www.instagram.com/reel/Dfiqchttyfv/",
+   "timestamp": "2026-11-10T00:53:47+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18110044910621048",
+   "permalink": "https://www.instagram.com/reel/DfiaxDLMHWG/",
+   "timestamp": "2026-11-09T22:37:18+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18607980058065754",
+   "permalink": "https://www.instagram.com/p/DfiF0bXPP2v/",
+   "timestamp": "2026-11-09T19:33:23+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "How do we like the new format?",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18116345021593964",
+   "permalink": "https://www.instagram.com/reel/DfiA2HvSKnV/",
+   "timestamp": "2026-11-09T18:50:29+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18088584686705836",
+   "permalink": "https://www.instagram.com/reel/Dfhy9gYv4yU/",
+   "timestamp": "2026-11-09T16:50:31+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18153182683471867",
+   "permalink": "https://www.instagram.com/reel/DfgQab3tTFt/",
+   "timestamp": "2026-11-09T02:28:10+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18131268112793248",
+   "permalink": "https://www.instagram.com/reel/DfX1bPnSjfd/",
+   "timestamp": "2026-11-05T19:57:47+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Mergers & Inquisitions Guide: Interview question bank with 400 of the most commonly asked interview questions\n\nCorporate Finance Institute: Detailed overviews to build a better understanding of modeling and practice technicals\n\nYour Finance Brother: Breaks down careers in finance in an easy to understand way. Helps with Excel, common interview questions, how to dress, and more\n\nInvestopedia: Like Wikipedia, but with a focus on finance terms. Great resource to look up definitions and develop a basic understanding of concepts\n\nPeak Frameworks: More intense technical and modeling practice. Helpful resource when preparing for case studies\n\nNot advice, just educational.",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18022649021730891",
+   "permalink": "https://www.instagram.com/reel/DfXsu6TvaRl/",
+   "timestamp": "2026-11-05T18:42:09+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18480272878117372",
+   "permalink": "https://www.instagram.com/p/DfXWHtcG8eU/",
+   "timestamp": "2026-11-05T15:23:44+0000",
+   "media_type": "CAROUSEL_ALBUM",
+   "media_product_type": "FEED",
+   "caption": "Vintage Your Finance Brother",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18073317548685936",
+   "permalink": "https://www.instagram.com/reel/DfVgs4BSMAf/",
+   "timestamp": "2026-11-04T22:19:35+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18358477441247742",
+   "permalink": "https://www.instagram.com/reel/DfVFwnkB8GO/",
+   "timestamp": "2026-11-04T18:23:21+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17916855501514534",
+   "permalink": "https://www.instagram.com/reel/DfSpcRLyDMq/",
+   "timestamp": "2026-11-03T19:37:22+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Just a joke :)",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18083612333651208",
+   "permalink": "https://www.instagram.com/reel/DfSXo7Ah6Xd/",
+   "timestamp": "2026-11-03T17:01:27+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18120701000082093",
+   "permalink": "https://www.instagram.com/reel/DfQHNu1SykW/",
+   "timestamp": "2026-11-02T19:59:55+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18053018090813177",
+   "permalink": "https://www.instagram.com/reel/DfOGet2pCBz/",
+   "timestamp": "2026-11-02T01:15:50+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18145062217718355",
+   "permalink": "https://www.instagram.com/reel/DfNoeSazkNv/",
+   "timestamp": "2026-11-01T20:52:28+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Gift giving guide: Pt 2",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18111403628078153",
+   "permalink": "https://www.instagram.com/reel/DfLv_bVBF0Z/",
+   "timestamp": "2026-11-01T03:19:40+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18138650269733452",
+   "permalink": "https://www.instagram.com/reel/DfLdZQkhDBE/",
+   "timestamp": "2026-11-01T00:36:43+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Stay hungry",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18649918360036147",
+   "permalink": "https://www.instagram.com/p/DfKsLoKkhwW/",
+   "timestamp": "2026-10-31T17:26:23+0000",
+   "media_type": "CAROUSEL_ALBUM",
+   "media_product_type": "FEED",
+   "caption": "October Boy",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18079424909719562",
+   "permalink": "https://www.instagram.com/reel/DfIChNBh-Fh/",
+   "timestamp": "2026-10-30T16:45:00+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18383399989237718",
+   "permalink": "https://www.instagram.com/reel/DfHzg8tu2zf/",
+   "timestamp": "2026-10-30T14:35:33+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18089599193290694",
+   "permalink": "https://www.instagram.com/reel/DfGV2d4vylg/",
+   "timestamp": "2026-10-30T00:55:39+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17965825905235347",
+   "permalink": "https://www.instagram.com/reel/DfF6h4ZS0rK/",
+   "timestamp": "2026-10-29T20:56:12+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18349202572268905",
+   "permalink": "https://www.instagram.com/reel/DfDsrAnxF6c/",
+   "timestamp": "2026-10-29T00:17:34+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17970491037008604",
+   "permalink": "https://www.instagram.com/reel/DfDHrMVvt4q/",
+   "timestamp": "2026-10-28T18:54:03+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18129230287894189",
+   "permalink": "https://www.instagram.com/reel/DfBZdY6J-CP/",
+   "timestamp": "2026-10-28T02:50:56+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18106505606371817",
+   "permalink": "https://www.instagram.com/reel/DfA66uzSNlj/",
+   "timestamp": "2026-10-27T22:23:39+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18155544646522486",
+   "permalink": "https://www.instagram.com/reel/DfAk3gdyAfZ/",
+   "timestamp": "2026-10-27T19:11:20+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17972421918314851",
+   "permalink": "https://www.instagram.com/p/De93L2qEs-b/",
+   "timestamp": "2026-10-26T17:52:24+0000",
+   "media_type": "CAROUSEL_ALBUM",
+   "media_product_type": "FEED",
+   "caption": "Halloween costume inspiration",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18397607101206279",
+   "permalink": "https://www.instagram.com/reel/De9vtq2JNxn/",
+   "timestamp": "2026-10-26T16:48:22+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18139978099532381",
+   "permalink": "https://www.instagram.com/reel/De7TjAdu8I9/",
+   "timestamp": "2026-10-25T18:04:02+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18187648444413340",
+   "permalink": "https://www.instagram.com/reel/De69At3gTuM/",
+   "timestamp": "2026-10-25T14:46:43+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17926987263428043",
+   "permalink": "https://www.instagram.com/p/De5MVj0vAtt/",
+   "timestamp": "2026-10-24T22:21:05+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18129766330870341",
+   "permalink": "https://www.instagram.com/reel/De4xDZgPpvO/",
+   "timestamp": "2026-10-24T18:24:09+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18191701756407375",
+   "permalink": "https://www.instagram.com/p/De2pThaxLZH/",
+   "timestamp": "2026-10-23T22:36:29+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18105295499127877",
+   "permalink": "https://www.instagram.com/reel/De18G_5M2mL/",
+   "timestamp": "2026-10-23T16:03:45+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "ChatGPT is helping me figure out if I should move to San Francisco. chatgpt #ChatGPT_Partner",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17996956176031271",
+   "permalink": "https://www.instagram.com/reel/De0U_WZvgbB/",
+   "timestamp": "2026-10-23T01:01:31+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18148329535603476",
+   "permalink": "https://www.instagram.com/reel/Dez3fHVyoiW/",
+   "timestamp": "2026-10-22T20:44:15+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18116951147082943",
+   "permalink": "https://www.instagram.com/reel/DezpYaVvl6-/",
+   "timestamp": "2026-10-22T18:40:03+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18230625946334531",
+   "permalink": "https://www.instagram.com/reel/DeuqwbtSzol/",
+   "timestamp": "2026-10-20T20:15:46+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18021168869728132",
+   "permalink": "https://www.instagram.com/p/DeuUJ0NvMJ-/",
+   "timestamp": "2026-10-20T16:57:44+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18138690805633645",
+   "permalink": "https://www.instagram.com/reel/DeuLUbFAlhi/",
+   "timestamp": "2026-10-20T15:42:19+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Every man should have a suit in his wardrobe. jcrew makes getting one easy. #JCrewPartner #ad",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17969720526189217",
+   "permalink": "https://www.instagram.com/reel/DespHHnPVBD/",
+   "timestamp": "2026-10-20T01:24:11+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18122173279931493",
+   "permalink": "https://www.instagram.com/reel/Derr1eAx_GG/",
+   "timestamp": "2026-10-19T16:28:18+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17932611423423087",
+   "permalink": "https://www.instagram.com/reel/DeqMpyPxWI_/",
+   "timestamp": "2026-10-19T02:36:30+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Tony Hawk… I mean Tony Stock was shredding gnar on a tryramp ramp",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18144857872578500",
+   "permalink": "https://www.instagram.com/p/DeqGk-ukQGz/",
+   "timestamp": "2026-10-19T01:42:06+0000",
+   "media_type": "CAROUSEL_ALBUM",
+   "media_product_type": "FEED",
+   "caption": "Quick weekend trip back to the city",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18117001478515102",
+   "permalink": "https://www.instagram.com/reel/DepKoAyRaQz/",
+   "timestamp": "2026-10-18T17:00:07+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18097814456419977",
+   "permalink": "https://www.instagram.com/reel/DendGSQxjoA/",
+   "timestamp": "2026-10-18T01:02:12+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17911339467517179",
+   "permalink": "https://www.instagram.com/reel/DenB7h6Sw8v/",
+   "timestamp": "2026-10-17T21:05:19+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18140345458623056",
+   "permalink": "https://www.instagram.com/reel/DelVqsMRQwC/",
+   "timestamp": "2026-10-17T05:18:16+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18339451414278148",
+   "permalink": "https://www.instagram.com/reel/DeiMWqFMoaB/",
+   "timestamp": "2026-10-16T00:00:42+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17973631530167785",
+   "permalink": "https://www.instagram.com/reel/DehWwWgsNcu/",
+   "timestamp": "2026-10-15T16:11:57+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Square can make the customer and business experience a whole lot better. Save up to $200 on square hardware with my link. #SauarePartner #ad",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18131455567780704",
+   "permalink": "https://www.instagram.com/reel/Defpe23M3Gf/",
+   "timestamp": "2026-10-15T00:17:21+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18109496462237810",
+   "permalink": "https://www.instagram.com/reel/DefHrNWv_FV/",
+   "timestamp": "2026-10-14T19:21:02+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18062406653528551",
+   "permalink": "https://www.instagram.com/reel/DedWLP4P063/",
+   "timestamp": "2026-10-14T02:49:51+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18117627074065644",
+   "permalink": "https://www.instagram.com/reel/Dec19OWylrJ/",
+   "timestamp": "2026-10-13T22:07:47+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18200473405380822",
+   "permalink": "https://www.instagram.com/reel/DechTvnSvtu/",
+   "timestamp": "2026-10-13T19:07:28+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18098997737530955",
+   "permalink": "https://www.instagram.com/reel/DeaEJbeSg_O/",
+   "timestamp": "2026-10-12T20:14:08+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18099153050344391",
+   "permalink": "https://www.instagram.com/reel/DeZyUk9yzuI/",
+   "timestamp": "2026-10-12T17:37:52+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17922638070438149",
+   "permalink": "https://www.instagram.com/reel/DeYAMxlxdqB/",
+   "timestamp": "2026-10-12T01:25:33+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18110631155128447",
+   "permalink": "https://www.instagram.com/reel/DeXQcCCyJ2J/",
+   "timestamp": "2026-10-11T18:04:21+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17993542062022081",
+   "permalink": "https://www.instagram.com/reel/DeW5ACyxTrN/",
+   "timestamp": "2026-10-11T14:38:51+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "These are the Keyboard shortcuts I use so I never have to touch my mouse.\n\n- “Alt + Tab”: Quickly cycle between the windows you have open in the background without having to click into them\n\n- “Windows Key + Arrows”: Move windows from one monitor to another or split a window on your screen, add in the Shift key  to snap windows between monitors\n\n- “Windows + L”: Allows you to instantly lock your computer without having to do anything else\n\n- “Ctrl + Y”: You probably know about Ctrl + Z to undo something, but this re-does what you just undid\n\n- “Ctrl + T”: Opens a new tab in your browser, and you can press F5 or Ctrl + R to refresh the page\n\nFollow for more tips like this, I would appreciate it!",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17906166201590614",
+   "permalink": "https://www.instagram.com/reel/DeVE7-ayFSs/",
+   "timestamp": "2026-10-10T21:44:30+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17882849160690855",
+   "permalink": "https://www.instagram.com/p/DePJ7ZSuOxx/",
+   "timestamp": "2026-10-08T14:31:56+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17954296089034355",
+   "permalink": "https://www.instagram.com/reel/DeOBNnix4I_/",
+   "timestamp": "2026-10-08T03:57:45+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18116627539814644",
+   "permalink": "https://www.instagram.com/reel/DeNQjIuS9nT/",
+   "timestamp": "2026-10-07T20:52:42+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18156187438546081",
+   "permalink": "https://www.instagram.com/reel/DeLSzNpha_f/",
+   "timestamp": "2026-10-07T02:34:32+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18069044708759306",
+   "permalink": "https://www.instagram.com/reel/DeKjBFvyKIe/",
+   "timestamp": "2026-10-06T19:36:24+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "I’m able to have a delicious, flavorful meal while still lifemaxxing with knorr #KnorrPartner",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18024883790703970",
+   "permalink": "https://www.instagram.com/reel/DeKaERjNbQc/",
+   "timestamp": "2026-10-06T18:18:33+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18285058504295814",
+   "permalink": "https://www.instagram.com/reel/DeKO4LiN4-I/",
+   "timestamp": "2026-10-06T16:40:45+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17947251573345449",
+   "permalink": "https://www.instagram.com/reel/DeIpxomv6PZ/",
+   "timestamp": "2026-10-06T01:57:19+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17873556441594772",
+   "permalink": "https://www.instagram.com/reel/DeDGPYkS5Oy/",
+   "timestamp": "2026-10-03T22:09:20+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Some of my most used Excel functions, as someone who has spent over 10,000 hours in Excel:\n\n* =XLOOKUP / =INDEX(MATCH()) - Used to look up a specific value and return the corresponding item\n\n* =SUMIFS(Sum Range, Criteria 1 Range, Criteria 1…) - Used to sum a range based on specific criteria\n\n* =COUNTIFS - Same concept as =SUMIFS, but used to count instead of sum\n\n* =XIRR(Values, Dates) - Takes a range of cash flows and corresponding dates to calculate internal rate of return\n\n* =RRI (Number of Periods, Present Value, Future Value) - Used to calculate compound annual growth rate or “CAGR”\n\n* =IF(Logic, True Value, False Value) - Checks for a certain logical condition then returns a value if true or false\n\n* =IFERROR(Value, Value If Error) - Used to make sure an error is not returned, returns a specific value instead of an error\n\nFollow if you found these helpful! Not advice, just educational.",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18098438840421247",
+   "permalink": "https://www.instagram.com/reel/DeAiWIOSJuU/",
+   "timestamp": "2026-10-02T22:17:24+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18218105971347794",
+   "permalink": "https://www.instagram.com/reel/Dd-OMO-hjAZ/",
+   "timestamp": "2026-10-02T00:43:08+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Just joking around, but this way is much faster!",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18015773936929942",
+   "permalink": "https://www.instagram.com/reel/Dd7h9FgOoyT/",
+   "timestamp": "2026-09-30T23:39:13+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17950190310282572",
+   "permalink": "https://www.instagram.com/reel/Dd4a_Dhv8JD/",
+   "timestamp": "2026-09-29T18:39:47+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18113253635026506",
+   "permalink": "https://www.instagram.com/p/Dd1kL0DMVEc/",
+   "timestamp": "2026-09-28T16:01:07+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18128632459809319",
+   "permalink": "https://www.instagram.com/reel/Dd0KaUUtThL/",
+   "timestamp": "2026-09-28T02:58:26+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17910469659506516",
+   "permalink": "https://www.instagram.com/reel/DdxCnmASBMx/",
+   "timestamp": "2026-09-26T21:51:49+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17883727899620709",
+   "permalink": "https://www.instagram.com/reel/DdwodoZBYDM/",
+   "timestamp": "2026-09-26T18:03:24+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18101886941633090",
+   "permalink": "https://www.instagram.com/p/DdwR8f4NFRU/",
+   "timestamp": "2026-09-26T14:45:31+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17881998201688588",
+   "permalink": "https://www.instagram.com/reel/DduSQRsSTgn/",
+   "timestamp": "2026-09-25T20:11:26+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17959107153080226",
+   "permalink": "https://www.instagram.com/reel/DduCsTOScMy/",
+   "timestamp": "2026-09-25T17:54:51+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18073442858721217",
+   "permalink": "https://www.instagram.com/reel/DdsRRtMPD8A/",
+   "timestamp": "2026-09-25T01:24:51+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18132132784669019",
+   "permalink": "https://www.instagram.com/reel/DdrRNEIu1Za/",
+   "timestamp": "2026-09-24T16:04:28+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "17882254203623926",
+   "permalink": "https://www.instagram.com/reel/DdpAhtaSOaa/",
+   "timestamp": "2026-09-23T19:00:06+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18111512123114068",
+   "permalink": "https://www.instagram.com/reel/Ddm2rwrx2NX/",
+   "timestamp": "2026-09-22T22:56:44+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18013916414747918",
+   "permalink": "https://www.instagram.com/reel/Ddh7tJrRkXP/",
+   "timestamp": "2026-09-21T01:02:37+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "Substack is YourFinanceBrother",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18027953099883871",
+   "permalink": "https://www.instagram.com/p/DdhySHqROdo/",
+   "timestamp": "2026-09-20T23:42:16+0000",
+   "media_type": "IMAGE",
+   "media_product_type": "FEED",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18101921483365373",
+   "permalink": "https://www.instagram.com/reel/DdhoeTSRgWM/",
+   "timestamp": "2026-09-20T22:14:57+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  },
+  {
+   "id": "18133022185647962",
+   "permalink": "https://www.instagram.com/reel/Ddgxj7Ixz2h/",
+   "timestamp": "2026-09-20T14:15:35+0000",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "caption": "",
+   "first_seen": "2026-11-13T22:58:00Z"
+  }
+ ],
+ "checked_at": "2026-11-13T22:58:00Z",
+ "backfill_complete": false
+}
