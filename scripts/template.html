@@ -78,8 +78,22 @@
   .sheet col.c-num { width: 3.25rem; }
   .sheet col.c-date { width: 7.25rem; }
   .sheet col.c-link { width: 5.25rem; }
-  .sheet col.c-topics { width: 12rem; }
+  .sheet col.c-topics { width: 11rem; }
+  .sheet col.c-views { width: 6.5rem; }
+  .sheet col.c-likes { width: 5.5rem; }
   .sheet col.c-text { width: 7.5rem; }
+  .sheet thead th.sortable { padding: 0; }
+  .sheet thead button.sort {
+    width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: .35rem;
+    padding: .3rem .65rem; border: 0; background: transparent;
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+  }
+  .sheet thead button.sort:hover { background: #E7E7E7; color: var(--ink); }
+  .sheet thead button.sort:focus-visible { outline-offset: -2px; }
+  .sheet thead th[aria-sort] button.sort { color: var(--ink); }
+  .sort .arrow { font-size: .7rem; color: var(--select-green); }
+  td.views, td.likes { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .mstats, .sortbar { display: none; }
   .sheet th, .sheet td {
     border: 1px solid var(--grid);
     padding: .45rem .65rem;
@@ -152,6 +166,7 @@
     font-size: .78rem; color: var(--ink-2);
   }
   .statusbar .mode { margin-right: 1.25rem; color: var(--ink); }
+  .statusbar #count { white-space: nowrap; }
 
   @media (max-width: 760px) {
     .titlebar .long { display: none; }
@@ -160,19 +175,26 @@
     .sheet thead, .sheet colgroup { display: none; }
     .sheet tr {
       display: grid;
-      grid-template-columns: 2.75rem 1fr auto auto;
+      grid-template-columns: 2.75rem minmax(0, 1fr) auto auto;
       grid-template-areas: "num date text link" "num said said said" "num topics topics topics";
       border-bottom: 1px solid var(--grid);
     }
     .sheet td { display: block; border: 0; padding: .3rem .7rem; }
     td.num { grid-area: num; border-right: 1px solid var(--grid); padding-top: .6rem; }
-    td.date { grid-area: date; padding-top: .6rem; color: var(--ink-2); font-size: .85rem; }
-    td.text { grid-area: text; align-self: start; margin-top: .55rem; padding: .05rem .45rem; font-size: .78rem; }
+    td.date { grid-area: date; padding-top: .6rem; color: var(--ink-2); font-size: .85rem; white-space: normal; min-width: 0; }
+    td.text { grid-area: text; align-self: start; margin-top: .55rem; padding: .05rem .45rem; font-size: .78rem; white-space: nowrap; }
     td.link { grid-area: link; padding-top: .55rem; text-align: right; }
     td.link .kind { display: none; }
     td.said { grid-area: said; padding-bottom: .5rem; }
     td.topics { grid-area: topics; margin-top: -.3rem; padding-bottom: .6rem; color: var(--ink-2); font-size: .82rem; }
-    td.said:empty, td.topics:empty { display: none; }
+    td.said:empty, td.topics:empty, td.views, td.likes { display: none; }
+    .mstats { display: block; margin-top: .1rem; font-size: .8rem; font-variant-numeric: tabular-nums; }
+    .sortbar {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .45rem .7rem; border-bottom: 1px solid var(--grid);
+      font-size: .85rem; color: var(--ink-2);
+    }
+    .sortbar select { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--grid); border-radius: 2px; padding: .15rem .3rem; }
     tr:focus-within td.said { box-shadow: none; }
     tr.note { display: grid; grid-template-columns: 2.75rem 1fr; grid-template-areas: "num said"; }
     tr.note td:last-child { grid-area: said; padding: .8rem .7rem; }
@@ -192,11 +214,29 @@
 </div>
 
 <main id="sheet" role="tabpanel" tabindex="-1">
+  <div class="sortbar">
+    <label for="sort">Sort</label>
+    <select id="sort">
+      <option value="date-desc">Newest first</option>
+      <option value="views-desc">Most viewed</option>
+      <option value="likes-desc">Most liked</option>
+      <option value="date-asc">Oldest first</option>
+    </select>
+  </div>
   <table class="sheet">
     <caption class="sr-only" id="sheet-caption">Posts</caption>
-    <colgroup><col class="c-num"><col class="c-date"><col class="c-link"><col class="c-said"><col class="c-topics"><col class="c-text"></colgroup>
+    <colgroup><col class="c-num"><col class="c-date"><col class="c-link"><col class="c-said"><col class="c-topics"><col class="c-views"><col class="c-likes"><col class="c-text"></colgroup>
     <thead>
-      <tr><th scope="col"><span class="sr-only">Row</span></th><th scope="col">Posted</th><th scope="col">Reel</th><th scope="col">What he said</th><th scope="col">Topics</th><th scope="col">Text</th></tr>
+      <tr>
+        <th scope="col"><span class="sr-only">Row</span></th>
+        <th scope="col" class="sortable" data-sort="date"><button type="button" class="sort" data-sort="date">Posted<span class="arrow" aria-hidden="true"></span></button></th>
+        <th scope="col">Reel</th>
+        <th scope="col">What he said</th>
+        <th scope="col">Topics</th>
+        <th scope="col" class="sortable" data-sort="views"><button type="button" class="sort" data-sort="views">Views<span class="arrow" aria-hidden="true"></span></button></th>
+        <th scope="col" class="sortable" data-sort="likes"><button type="button" class="sort" data-sort="likes">Likes<span class="arrow" aria-hidden="true"></span></button></th>
+        <th scope="col">Text</th>
+      </tr>
     </thead>
     <tbody id="rows"></tbody>
   </table>
@@ -229,7 +269,9 @@
     count: document.getElementById("count"),
     checked: document.getElementById("checked"),
     caption: document.getElementById("sheet-caption"),
-    profile: document.getElementById("profile")
+    profile: document.getElementById("profile"),
+    sortSelect: document.getElementById("sort"),
+    sortHeaders: Array.prototype.slice.call(document.querySelectorAll("th.sortable"))
   };
 
   var username = (data.account && data.account.username) || "";
@@ -243,6 +285,7 @@
 
   var dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" });
   var stampFmt = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short" });
+  var numFmt = new Intl.NumberFormat("en-US");
   if (data.checked_at) {
     var checked = new Date(data.checked_at);
     if (!isNaN(checked)) els.checked.textContent = "Last checked " + stampFmt.format(checked);
@@ -256,7 +299,7 @@
   if (posts.some(function (p) { return p.sponsored; })) sheets.push({ id: "sponsored", label: "Sponsored" });
   sheets.push({ id: "unsorted", label: "Not sorted yet" });
 
-  var state = { sheet: "all", words: [], reelsOnly: true };
+  var state = { sheet: "all", words: [], reelsOnly: true, sort: "date", dir: "desc" };
   var fromHash = decodeURIComponent(location.hash.slice(1));
   if (sheets.some(function (s) { return s.id === fromHash; })) state.sheet = fromHash;
 
@@ -286,8 +329,24 @@
     return words.every(function (w) { return hay.indexOf(w.toLowerCase()) !== -1; });
   }
 
+  function hasValue(v) { return v !== null && v !== undefined && v !== ""; }
+
+  // Posts in the current sort order. Missing counts (photos have no views) always go last.
   function baseList() {
-    return state.reelsOnly ? posts.filter(function (p) { return p.kind === "reel"; }) : posts;
+    var list = state.reelsOnly ? posts.filter(function (p) { return p.kind === "reel"; }) : posts.slice();
+    var key = state.sort === "date" ? "ts" : state.sort;
+    var sign = state.dir === "desc" ? -1 : 1;
+    return list.sort(function (a, b) {
+      var va = a[key], vb = b[key];
+      if (!hasValue(va) || !hasValue(vb)) return hasValue(va) ? -1 : hasValue(vb) ? 1 : 0;
+      return va < vb ? -sign : va > vb ? sign : 0;
+    });
+  }
+
+  function setSort(key, dir) {
+    state.sort = key;
+    state.dir = dir;
+    render();
   }
 
   function renderTabs(base) {
@@ -326,18 +385,39 @@
     var status = p.transcript ? ["good", "Transcript"] : p.caption ? ["neutral", "Caption only"] : ["bad", "No text yet"];
     var date = new Date(p.ts);
 
+    var views = hasValue(p.views) ? numFmt.format(p.views) : "";
+    var likes = hasValue(p.likes) ? numFmt.format(p.likes) : "";
+    var statsDate = new Date(p.stats_at);
+    var asOf = isNaN(statsDate) ? "" : ' title="As of ' + esc(dateFmt.format(statsDate)) + '"';
+    var phoneStats = [views && views + " views", likes && likes + " likes"].filter(Boolean).join(", ");
+
     return "<tr>" +
       '<td class="num">' + number + "</td>" +
-      '<td class="date">' + (isNaN(date) ? "" : esc(dateFmt.format(date))) + "</td>" +
+      '<td class="date">' + (isNaN(date) ? "" : esc(dateFmt.format(date))) +
+        (phoneStats ? '<span class="mstats">' + phoneStats + "</span>" : "") + "</td>" +
       '<td class="link">' + link + kind + "</td>" +
       said +
       '<td class="topics">' + topics + "</td>" +
+      '<td class="views"' + asOf + ">" + views + "</td>" +
+      '<td class="likes"' + asOf + ">" + likes + "</td>" +
       '<td class="text ' + status[0] + '">' + status[1] + "</td>" +
       "</tr>";
   }
 
   function noteRow(html) {
-    return '<tr class="note"><td class="num"></td><td colspan="5">' + html + "</td></tr>";
+    return '<tr class="note"><td class="num"></td><td colspan="7">' + html + "</td></tr>";
+  }
+
+  function renderSortControls() {
+    els.sortHeaders.forEach(function (th) {
+      var active = th.getAttribute("data-sort") === state.sort;
+      if (active) th.setAttribute("aria-sort", state.dir === "desc" ? "descending" : "ascending");
+      else th.removeAttribute("aria-sort");
+      th.querySelector(".arrow").textContent = active ? (state.dir === "desc" ? "▼" : "▲") : "";
+    });
+    var value = state.sort + "-" + state.dir;
+    var known = Array.prototype.some.call(els.sortSelect.options, function (o) { return o.value === value; });
+    els.sortSelect.value = known ? value : "";
   }
 
   function render() {
@@ -366,7 +446,20 @@
     }
     els.rows.innerHTML = html;
     renderTabs(base);
+    renderSortControls();
   }
+
+  // Click a column header to sort by it. Clicking the same header again flips the order.
+  els.sortHeaders.forEach(function (th) {
+    th.querySelector("button.sort").addEventListener("click", function () {
+      var key = th.getAttribute("data-sort");
+      setSort(key, key === state.sort ? (state.dir === "desc" ? "asc" : "desc") : "desc");
+    });
+  });
+  els.sortSelect.addEventListener("change", function () {
+    var parts = els.sortSelect.value.split("-");
+    if (parts.length === 2) setSort(parts[0], parts[1]);
+  });
 
   els.rows.addEventListener("click", function (e) {
     var btn = e.target.closest("button.more");

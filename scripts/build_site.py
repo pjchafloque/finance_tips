@@ -79,10 +79,15 @@ def read_transcripts() -> dict[str, str]:
 
 def utc_iso(timestamp: str) -> str:
     """Turn Instagram's 2026-11-13T21:20:50+0000 into 2026-11-13T21:20:50Z, which every browser parses."""
-    try:
-        return datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S%z").astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    except (TypeError, ValueError):
-        return timestamp or ""
+    for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%SZ"):
+        try:
+            parsed = datetime.strptime(timestamp, fmt)
+        except (TypeError, ValueError):
+            continue
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return timestamp or ""
 
 
 def build(posts: list[dict], topic_defs: list[dict], overrides: dict, transcripts: dict) -> tuple[list[dict], list[str]]:
@@ -115,6 +120,9 @@ def build(posts: list[dict], topic_defs: list[dict], overrides: dict, transcript
             "transcript": transcript,
             "topics": topics,
             "sponsored": bool(SPONSORED.search(caption)),
+            "views": post.get("views"),
+            "likes": post.get("likes"),
+            "stats_at": utc_iso(post.get("stats_at") or ""),
         })
     by_code_or_id = {p["code"] for p in out} | {p["id"] for p in out}
     for key in overrides:

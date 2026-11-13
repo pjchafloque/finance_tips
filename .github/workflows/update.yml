@@ -41,7 +41,14 @@ jobs:
         if: github.event_name != 'push'
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-        run: python3 scripts/fetch_posts.py ${{ inputs.full_scan && '--full' || '' }}
+          FULL_SCAN: ${{ inputs.full_scan }}
+        run: |
+          # On Sundays, re-check every post so older reels' views and likes stay current.
+          if [ "$FULL_SCAN" = "true" ] || [ "$(date -u +%u)" = "7" ]; then
+            python3 scripts/fetch_posts.py --full
+          else
+            python3 scripts/fetch_posts.py
+          fi
 
       - name: Build the page
         run: python3 scripts/build_site.py

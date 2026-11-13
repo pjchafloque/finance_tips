@@ -2,10 +2,12 @@
 """Pull @your_finance_brother's posts from Instagram's Business Discovery API.
 
 New posts are merged into data/posts.json. Posts already in the file keep
-their first_seen date, and their caption is refreshed if it changed.
+their first_seen date, and their caption, views and likes are refreshed
+whenever the run sees them again (stats_at records when).
 
 The first run pages through every post. After that, each run stops as soon
-as it reaches a page with nothing new, unless you pass --full.
+as it reaches a page with nothing new, unless you pass --full. The GitHub
+workflow passes --full on Sundays so older reels' counts stay current.
 
 Needs the IG_ACCESS_TOKEN environment variable: a Page access token for the
 Facebook Page linked to the Instagram account whose ID is in config.json.
@@ -29,7 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "config.json"
 DATA_PATH = ROOT / "data" / "posts.json"
 
-MEDIA_FIELDS = "id,caption,media_type,media_product_type,permalink,timestamp"
+MEDIA_FIELDS = "id,caption,media_type,media_product_type,permalink,timestamp,like_count,view_count"
 ACCOUNT_FIELDS = "name,followers_count,media_count"
 # Graph API error codes that usually clear up on their own (temporary errors, rate limits).
 RETRYABLE_CODES = {1, 2, 4, 17, 32, 341, 613}
@@ -112,6 +114,7 @@ def discovery_fields(username: str, page_size: int, after: str | None = None) ->
 
 
 def to_record(item: dict) -> dict:
+    # Instagram leaves like_count out when the owner hides likes, and view_count is only sent for videos.
     return {
         "id": item["id"],
         "permalink": item.get("permalink") or "",
@@ -119,6 +122,8 @@ def to_record(item: dict) -> dict:
         "media_type": item.get("media_type") or "",
         "media_product_type": item.get("media_product_type") or "",
         "caption": item.get("caption") or "",
+        "views": item.get("view_count"),
+        "likes": item.get("like_count"),
     }
 
 
@@ -130,7 +135,10 @@ def run(cfg: dict, token: str, data: dict, *, full_scan: bool = False, fetch=htt
     merged into `data` before the error is raised.
     """
     posts = {p["id"]: p for p in data.get("posts", [])}
-    scan_all = full_scan or not data.get("backfill_complete", False)
+    # Walk every page on the first run, when asked, and once after views and likes were added
+    # (posts saved before then have no stats_at yet).
+    scan_all = (full_scan or not data.get("backfill_complete", False)
+                or any("stats_at" not in p for p in posts.values()))
     page_size = int(cfg.get("page_size", 100))
     stamp = now_iso()
     summary = {"checked": 0, "new_ids": [], "updated": 0, "pages": 0, "reached_end": False}
@@ -158,12 +166,15 @@ def run(cfg: dict, token: str, data: dict, *, full_scan: bool = False, fetch=htt
                 existing = posts.get(record["id"])
                 if existing is None:
                     record["first_seen"] = stamp
+                    record["stats_at"] = stamp
                     posts[record["id"]] = record
                     summary["new_ids"].append(record["id"])
                     new_on_page += 1
-                elif any(existing.get(k) != v for k, v in record.items()):
-                    existing.update(record)
-                    summary["updated"] += 1
+                else:
+                    if any(existing.get(k) != v for k, v in record.items()):
+                        existing.update(record)
+                        summary["updated"] += 1
+                    existing["stats_at"] = stamp
             after = ((media.get("paging") or {}).get("cursors") or {}).get("after")
             if not items or not after:
                 summary["reached_end"] = True
@@ -173,6 +184,10 @@ def run(cfg: dict, token: str, data: dict, *, full_scan: bool = False, fetch=htt
         else:
             log(f"Stopped after {MAX_PAGES} pages. The next run will continue.")
     finally:
+        if summary["reached_end"]:
+            # Posts Instagram no longer returns (deleted ones) keep their last counts.
+            for p in posts.values():
+                p.setdefault("stats_at", None)
         data["posts"] = sorted(posts.values(), key=lambda p: p.get("timestamp") or "", reverse=True)
         data["checked_at"] = stamp
         if summary["reached_end"]:

@@ -2,11 +2,11 @@
 
 A page that lists every reel from [@your_finance_brother](https://www.instagram.com/your_finance_brother/), sorted into topics like interviews, Excel and life on the job. Each row links to the reel and shows what he said: the caption for now, and the transcript once there is one. A GitHub Action checks Instagram every morning and adds his new reels on its own.
 
-The page looks like an Excel workbook. Each topic is a sheet tab at the bottom, the formula bar at the top searches everything he said, and the Text column is color coded: green means there's a transcript, yellow means caption only, red means no text yet.
+The page looks like an Excel workbook. Each topic is a sheet tab at the bottom, the formula bar at the top searches everything he said, and the Text column is color coded: green means there's a transcript, yellow means caption only, red means no text yet. The Views and Likes columns show how each reel did. Click Posted, Views or Likes to sort by that column (on a phone, use the Sort menu above the list). When you sort by views, the row numbers on the left become each reel's rank.
 
 ## How it works
 
-1. `scripts/fetch_posts.py` asks Instagram's official API (Business Discovery) for his newest posts and adds them to `data/posts.json`. The first run walks through his whole account. After that it stops as soon as it reaches posts it already has.
+1. `scripts/fetch_posts.py` asks Instagram's official API (Business Discovery) for his newest posts, with their views and likes, and adds them to `data/posts.json`. The first run walks through his whole account. After that it stops as soon as it reaches posts it already has, so the counts for the newest posts are refreshed every day. On Sundays the workflow re-checks every post so older reels' counts stay current too.
 2. `scripts/build_site.py` tags each post with topics from `topics.json`, adds transcripts from `transcripts/`, and writes `site/index.html`.
 3. `.github/workflows/update.yml` runs both every day at 11:17 UTC (5:17 am in Chicago in winter), saves the new posts to the repository, and publishes the page with GitHub Pages.
 
